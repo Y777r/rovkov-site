@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RC Rovkov Creator — Пісні на замовлення, відеомонтаж, AI фотосесії, оживлення фото</title>
-  <meta name="description" content="RC Rovkov Creator — створюємо пісні на замовлення, відеомонтаж, оживлення фото, AI фотосесії для будь-якої події. Понад 2000+ виконаних замовлень. Premium якість. 99% задоволених клієнтів." />
-  <meta name="keywords" content="пісня на замовлення, відеомонтаж, оживлення фото, AI фотосесія, генерація відео, відео на замовлення, пісня на день народження, пісня на весілля, монтаж відео, кліп на замовлення, музика на замовлення, фото AI, штучний інтелект фото, відеомонтаж для події, пісня на ювілей, пісня на корпоратив, монтаж весільного відео, Пісня на гендер паті, оживити фото, відео привітання, Rovkov Creator" />
+  <meta name="description" content="RC Rovkov Creator — створюємо пісні на замовлення, відеомонтаж, оживлення фото, AI фотосесії для будь-якої події. 2000+ замовлень. Premium якість." />
+  <meta name="keywords" content="пісня на замовлення, відеомонтаж, оживлення фото, AI фотосесія, генерація відео, відео на замовлення" />
   <meta name="robots" content="index, follow" />
 <script type="application/ld+json">
 {
@@ -85,7 +85,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='256' height='256' fill='%23000' /%3E%3Crect width='256' height='256' fill='%23fff' opacity='0.05' filter='url(%23n)' /%3E%3C/svg%3E");
       opacity: 0.028;
       pointer-events: none;
       z-index: 9999;
@@ -374,6 +374,168 @@
       transition: all 0.3s;
     }
     .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* PREMIUM DISCOUNT TIMER */
+    .premium-offer-section {
+      position: relative;
+      overflow: hidden;
+      padding: 60px 25px;
+      margin: 50px auto;
+      max-width: 900px;
+      border-radius: 30px;
+      text-align: center;
+      background:
+        linear-gradient(
+          135deg,
+          #050505 0%,
+          #111111 45%,
+          #1a0000 100%
+        );
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow:
+        0 0 40px rgba(255,0,0,0.15),
+        0 0 100px rgba(255,0,0,0.08);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .premium-offer-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(255,0,0,0.25),
+          transparent 35%
+        );
+      pointer-events: none;
+    }
+
+    .premium-badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255,0,0,0.15);
+      border: 1px solid rgba(255,0,0,0.4);
+      color: #ff4d4d;
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .premium-title {
+      color: white;
+      font-size: 48px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      font-weight: 800;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .premium-subtitle {
+      color: rgba(255,255,255,0.7);
+      font-size: 20px;
+      margin-bottom: 40px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .premium-timer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 45px;
+      flex-wrap: wrap;
+    }
+
+    .time-box {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 24px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.08),
+          rgba(255,255,255,0.03)
+        );
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      box-shadow:
+        inset 0 0 20px rgba(255,255,255,0.03),
+        0 0 20px rgba(255,0,0,0.08);
+      animation: pulseGlow 2s infinite;
+    }
+
+    .time-box span {
+      font-size: 48px;
+      color: white;
+      font-weight: 800;
+      line-height: 1;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .time-box small {
+      margin-top: 10px;
+      color: #ff4d4d;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .time-separator {
+      color: #ff4d4d;
+      font-size: 48px;
+      font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .premium-button {
+      display: inline-block;
+      padding: 18px 42px;
+      border-radius: 18px;
+      background:
+        linear-gradient(
+          90deg,
+          #ff0000,
+          #ff3d3d
+        );
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 1px;
+      transition: 0.3s ease;
+      box-shadow:
+        0 0 25px rgba(255,0,0,0.35);
+      font-family: 'Tenor Sans', sans-serif;
+    }
+
+    .premium-button:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow:
+        0 0 40px rgba(255,0,0,0.6);
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow:
+          0 0 10px rgba(255,0,0,0.08);
+      }
+      50% {
+        box-shadow:
+          0 0 30px rgba(255,0,0,0.25);
+      }
+      100% {
+        box-shadow:
+          0 0 10px rgba(255,0,0,0.08);
+      }
+    }
 
     /* STATS */
     .stats-strip {
@@ -983,6 +1145,12 @@
       .stat-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
       footer { padding: 32px 30px; }
       .guarantee-strip { padding: 40px; }
+      .premium-offer-section { margin: 40px 20px; }
+      .premium-title { font-size: 34px; }
+      .premium-subtitle { font-size: 16px; }
+      .time-box { width: 90px; height: 90px; }
+      .time-box span { font-size: 34px; }
+      .time-separator { font-size: 32px; }
     }
 
     @media (max-width: 640px) {
@@ -997,76 +1165,99 @@
       .guarantee-strip { flex-direction: column; }
       .cta-contacts { flex-direction: column; align-items: center; }
       .sticky-cta { bottom: 16px; right: 16px; }
+      .premium-offer-section { margin: 30px 15px; padding: 40px 20px; }
+      .premium-title { font-size: 28px; }
+      .premium-subtitle { font-size: 14px; }
+      .time-box { width: 75px; height: 75px; }
+      .time-box span { font-size: 28px; }
+      .time-separator { font-size: 24px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- CURSORS -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <!-- STICKY CTA -->
-  <div class="sticky-cta">
-    <div class="sticky-pulse"></div>
-    <a href="https://t.me/Rovkov" target="_blank">
-      ✉ Написати зараз
-    </a>
-  </div>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
 
   <!-- NAV -->
-  <nav id="navbar">
+  <nav>
     <a href="#" class="logo">
       <div class="logo-mark"><span>RC</span></div>
       <div class="logo-text">
-        <span class="rc">Rovkov</span>
-        <span class="creator">Creator</span>
+        <div class="rc">RC</div>
+        <div class="creator">CREATOR</div>
       </div>
     </a>
     <a href="https://t.me/Rovkov" target="_blank" class="nav-cta">
-      <span>Написати зараз</span>
+      <span>✎ ЗАМОВИТИ</span>
     </a>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="home">
+  <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-lines"></div>
     <div class="hero-content">
-      <div class="hero-badge">Premium Creative Studio</div>
+      <div class="hero-badge">PREMIUM ТВОРЧІ ПОСЛУГИ</div>
       <h1 class="hero-title">
-        <em>Творимо емоції</em>
-        <span class="line2">що залишаються назавжди</span>
+        Ваш <em>ідеальний</em><br><span class="line2">творчий партнер</span>
       </h1>
-      <p class="hero-subtitle">Пісні · Відео · AI фото · Оживлення фотографій</p>
+      <p class="hero-subtitle">ПІСНІ • ВІДЕО • AI СЕРВІСИ</p>
       <div class="hero-cta-group">
         <a href="https://t.me/Rovkov" target="_blank" class="btn-primary">
-          <span>Написати зараз</span>
+          <span>ЗАМОВИТИ</span>
           <span class="arrow">→</span>
         </a>
-        <a href="#services" class="btn-secondary">Наші послуги</a>
+        <a href="#about" class="btn-secondary">ДІЗНАТИСЯ БІЛЬШЕ</a>
       </div>
     </div>
+  </section>
+
+  <!-- PREMIUM DISCOUNT TIMER -->
+  <section class="premium-offer-section">
+    <div class="premium-badge">
+      LIMITED OFFER
+    </div>
+    <h2 class="premium-title">
+      🔥 ЗНИЖКА 15% НА ВСІ ПОСЛУГИ
+    </h2>
+    <p class="premium-subtitle">
+      Спеціальна пропозиція діє лише обмежений час
+    </p>
+    <div class="premium-timer">
+      <div class="time-box">
+        <span id="hours">24</span>
+        <small>ГОД</small>
+      </div>
+      <div class="time-separator">:</div>
+      <div class="time-box">
+        <span id="minutes">00</span>
+        <small>ХВ</small>
+      </div>
+      <div class="time-separator">:</div>
+      <div class="time-box">
+        <span id="seconds">00</span>
+        <small>СЕК</small>
+      </div>
+    </div>
+    <a href="https://t.me/Rovkov" target="_blank" class="premium-button">
+      ОТРИМАТИ ЗНИЖКУ
+    </a>
   </section>
 
   <!-- STATS -->
   <div class="stats-strip">
     <div class="stats-inner">
-      <div class="stat-item reveal">
-        <span class="stat-num">2000<span style="font-size:32px;vertical-align:super">+</span></span>
-        <span class="stat-label">Виконаних замовлень</span>
+      <div class="stat-item">
+        <span class="stat-num">2000+</span>
+        <span class="stat-label">ЗАМОВЛЕНЬ</span>
       </div>
-      <div class="stat-item reveal reveal-delay-1">
-        <span class="stat-num">99<span style="font-size:32px;vertical-align:super">%</span></span>
-        <span class="stat-label">Задоволених клієнтів</span>
+      <div class="stat-item">
+        <span class="stat-num">5.0</span>
+        <span class="stat-label">РЕЙТИНГ</span>
       </div>
-      <div class="stat-item reveal reveal-delay-2">
-        <span class="stat-num">∞</span>
-        <span class="stat-label">Унікальних ідей</span>
-      </div>
-      <div class="stat-item reveal reveal-delay-3">
-        <span class="stat-num">24<span style="font-size:32px;vertical-align:super">h</span></span>
-        <span class="stat-label">Швидка відповідь</span>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">ЗАДОВОЛЕНІ</span>
       </div>
     </div>
   </div>
@@ -1074,29 +1265,33 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="section-inner">
+      <div class="section-tag">ХHomepage ТА ВМІЙСТ</div>
+      <h2 class="section-title">
+        Про нас:<br><em>Творчість</em> <strong>без меж</strong>
+      </h2>
+      <div class="divider"><span>✦</span></div>
       <div class="about-grid">
-        <div class="about-left">
-          <div class="section-tag reveal">Про нас</div>
-          <h2 class="section-title reveal reveal-delay-1">
-            Ми перетворюємо<br><em>ваші моменти</em><br><strong>на шедеври</strong>
-          </h2>
-          <div class="about-text reveal reveal-delay-2">
-            <p>RC Rovkov Creator — це команда творців, які живуть мистецтвом. Ми спеціалізуємося на створенні унікального контенту, який <strong>торкається серця і залишається в пам'яті</strong>.</p>
-            <p>Кожне замовлення — це індивідуальна робота. Ми занурюємося в вашу історію, щоб створити щось по-справжньому особливе. Від пісні на день народження до повноцінного відеофільму — ми втілюємо мрії в реальність.</p>
-            <p>Понад <strong>2000 щасливих клієнтів</strong> вже довірились нам свої найважливіші моменти — весілля, ювілеї, корпоративи, сімейні свята. Приєднуйтесь до нашої великої творчої родини.</p>
-          </div>
+        <div class="about-text">
+          <p>
+            <strong>RC Rovkov Creator</strong> — це студія креативних рішень, яка сполучає найновіші технології з мистецтвом створення вражаючого контенту.
+          </p>
+          <p>
+            Ми спеціалізуємось на розробці індивідуальних рішень для <strong>особистих подій, корпоративних проектів та комерційного контенту</strong>.
+          </p>
+          <p>
+            Наша команда складається з досвідчених професіоналів, які захоплюються тим, що роблять, й завжди готові вийти за межі очікувань клієнта.
+          </p>
         </div>
-        <div class="about-visual reveal reveal-delay-2">
+        <div class="about-visual">
           <div class="about-card">
-            <div class="about-card-title">Чому обирають нас?</div>
+            <h3 class="about-card-title">Наші переваги</h3>
             <ul>
-              <li>Premium якість кожного продукту</li>
-              <li>Індивідуальний підхід до кожного клієнта</li>
-              <li>Дотримання термінів завжди</li>
-
-              <li>Конфіденційність ваших даних</li>
-              <li>Сучасні технології та AI-інструменти</li>
-              <li>Підтримка 24/7 для наших клієнтів</li>
+              <li>Персональний підхід до кожного клієнта</li>
+              <li>Використання AI та сучасних технологій</li>
+              <li>Швидке виконання без втрати якості</li>
+              <li>Необмежені правки та коригування</li>
+              <li>Демократичні ціни для всіх</li>
+              <li>24/7 готовність до комунікації</li>
             </ul>
             <div class="about-card-corner"></div>
           </div>
@@ -1106,270 +1301,207 @@
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="services-bg">
+  <section class="services-bg">
     <div class="section-inner">
-      <div class="section-tag reveal">Послуги</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        Все що вам потрібно<br><em>в одному місці</em>
+      <div class="section-tag">ПОСЛУГИ</div>
+      <h2 class="section-title">
+        Що <em>ми</em> <strong>створюємо</strong>
       </h2>
-      <div class="services-grid reveal reveal-delay-2">
-
+      <div class="divider"><span>✦</span></div>
+      <div class="services-grid">
         <div class="service-card">
           <span class="service-num">01</span>
           <span class="service-icon">🎵</span>
-          <div class="service-name">Пісня на замовлення</div>
-          <p class="service-desc">Унікальна авторська пісня для будь-якого приводу. Пишемо тексти, музику та повноцінний запис. Від ліричної балади до веселого хіта — будь-який жанр.</p>
+          <h3 class="service-name">Пісня на замовлення</h3>
+          <p class="service-desc">Оригінальна композиція, написана спеціально для вас або вашого клієнта. Від ідеї до готового треку з професійним звуком.</p>
           <div class="service-tags">
-            <span class="service-tag">День народження</span>
-            <span class="service-tag">Весілля</span>
-            <span class="service-tag">Ювілей</span>
-            <span class="service-tag">Корпоратив</span>
+            <span class="service-tag">AI</span>
+            <span class="service-tag">Original</span>
           </div>
         </div>
-
         <div class="service-card">
           <span class="service-num">02</span>
           <span class="service-icon">🎬</span>
-          <div class="service-name">Відеомонтаж</div>
-          <p class="service-desc">Професійний монтаж відео для будь-якої події. Слайд-шоу, весільні фільми, кліпи, корпоративні ролики. Кінематографічна якість з душею.</p>
+          <h3 class="service-name">Відеомонтаж</h3>
+          <p class="service-desc">Професійна обробка та монтаж відео: від мікровідео до повнометражних проектів. Кольорокорекція, спецефекти, музика.</p>
           <div class="service-tags">
-            <span class="service-tag">Весілля</span>
-            <span class="service-tag">Кліп</span>
-            <span class="service-tag">Реклама</span>
-            <span class="service-tag">Слайд-шоу</span>
+            <span class="service-tag">4K</span>
+            <span class="service-tag">Pro</span>
           </div>
         </div>
-
         <div class="service-card">
           <span class="service-num">03</span>
           <span class="service-icon">✨</span>
-          <div class="service-name">Оживлення фото</div>
-          <p class="service-desc">Перетворюємо статичні фотографії на захоплюючі відео з ефектом руху. Старі фото оживають — ваші рідні рухаються, посміхаються, дивляться у вічі.</p>
+          <h3 class="service-name">Оживлення фото</h3>
+          <p class="service-desc">Магія, яка оживлює статичні фотографії! Тонкі рухи, мерехтіння очей, дихання — все це робить фото живим.</p>
           <div class="service-tags">
-            <span class="service-tag">Ретро фото</span>
-            <span class="service-tag">Пам'ять</span>
-            <span class="service-tag">AI технологія</span>
+            <span class="service-tag">AI</span>
+            <span class="service-tag">Magic</span>
           </div>
         </div>
-
         <div class="service-card">
           <span class="service-num">04</span>
-          <span class="service-icon">🤖</span>
-          <div class="service-name">AI Фотосесія</div>
-          <p class="service-desc">Неймовірні фотографії без фотостудії. Завантажте своє фото — отримайте professionale зйомку в будь-якому стилі, локації та образі. Магія AI.</p>
+          <span class="service-icon">📸</span>
+          <h3 class="service-name">AI Фотосесія</h3>
+          <p class="service-desc">Безліч професійних портретів, створених за допомогою штучного інтелекту. Вибирайте образи та отримайте ідеальне фото!</p>
           <div class="service-tags">
-            <span class="service-tag">Портрет</span>
-            <span class="service-tag">Стиль</span>
-            <span class="service-tag">Будь-яка локація</span>
+            <span class="service-tag">AI</span>
+            <span class="service-tag">Fast</span>
           </div>
         </div>
-
         <div class="service-card">
           <span class="service-num">05</span>
           <span class="service-icon">🎥</span>
-          <div class="service-name">Генерація відео AI</div>
-          <p class="service-desc">Створення відеоконтенту за допомогою найновіших AI-технологій. Унікальні візуальні образи, рекламні ролики, мистецькі відео — без меж для уяви.</p>
+          <h3 class="service-name">Генерація відео AI</h3>
+          <p class="service-desc">Креативні відео, згенеровані штучним інтелектом. Від концепції до готового результату без необхідності в зйомках.</p>
           <div class="service-tags">
-            <span class="service-tag">AI відео</span>
-            <span class="service-tag">Реклама</span>
-            <span class="service-tag">Арт</span>
+            <span class="service-tag">AI</span>
+            <span class="service-tag">Creative</span>
           </div>
         </div>
-
         <div class="service-card">
           <span class="service-num">06</span>
-          <span class="service-icon">🎁</span>
-          <div class="service-name">Відеопривітання</div>
-          <p class="service-desc">Персональні відеопривітання для найрідніших людей. Зворушливі, веселі, незабутні. Ідеальний подарунок на будь-яке свято — від дня народження до Нового року.</p>
+          <span class="service-icon">🎉</span>
+          <h3 class="service-name">Відеопривітання</h3>
+          <p class="service-desc">Чарівне привітання для близьких або колег: персональне, творче, яке запам'ятається надовго. З музикою та ефектами!</p>
           <div class="service-tags">
-            <span class="service-tag">Привітання</span>
-            <span class="service-tag">Подарунок</span>
-            <span class="service-tag">Свято</span>
+            <span class="service-tag">Personal</span>
+            <span class="service-tag">Unique</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- PROCESS -->
-  <section id="process">
+  <section>
     <div class="section-inner">
-      <div style="text-align:center">
-        <div class="section-tag reveal" style="justify-content:center">Як ми працюємо</div>
-        <h2 class="section-title reveal reveal-delay-1" style="text-align:center">
-          Просто. Швидко.<br><em>З душею</em>
-        </h2>
-      </div>
+      <div class="section-tag">ПРОЦЕС РОБОТИ</div>
+      <h2 class="section-title">
+        Як ми <em>працюємо</em>
+      </h2>
+      <div class="divider"><span>✦</span></div>
       <div class="process-steps">
-        <div class="process-step reveal">
-          <div class="step-num">01</div>
-          <div class="step-title">Звʼяжіться з нами</div>
-          <p class="step-desc">Напишіть у Telegram, Viber або WhatsApp. Розкажіть про ваш проект та побажання.</p>
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <h3 class="step-title">Обговорення</h3>
+          <p class="step-desc">Ви розповідаєте нам про вашу ідею, деталі та очікування. Ми уважно слухаємо й задаємо уточнюючи питання.</p>
         </div>
-        <div class="process-step reveal reveal-delay-1">
-          <div class="step-num">02</div>
-          <div class="step-title">Обговорення</div>
-          <p class="step-desc">Ми уточнюємо всі деталі, стиль, дедлайн і узгоджуємо кожен крок разом з вами.</p>
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <h3 class="step-title">Планування</h3>
+          <p class="step-desc">Розробляємо детальний план дій, обираємо інструменти й методи для досягнення вашої мети.</p>
         </div>
-        <div class="process-step reveal reveal-delay-2">
-          <div class="step-num">03</div>
-          <div class="step-title">Творимо</div>
-          <p class="step-desc">Наша команда починає роботу. Ви отримуєте чернетку для погодження та правок.</p>
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <h3 class="step-title">Реалізація</h3>
+          <p class="step-desc">Починаємо творчий процес. Використовуємо новітні технології та мистецтво для створення вашого проекту.</p>
         </div>
-        <div class="process-step reveal reveal-delay-3">
-          <div class="step-num">04</div>
-          <div class="step-title">Отримуєте шедевр</div>
-          <p class="step-desc">Фінальний результат у найвищій якості. Ви в захваті — ми задоволені. Гарантовано.</p>
-        </div>
-      </div>
-
-      <div class="guarantee-strip reveal">
-        <div class="guarantee-item">
-          <span class="guarantee-icon">💎</span>
-          <div class="guarantee-text">
-            <div class="title">Premium якість</div>
-            <div class="desc">Кожен проект — як для себе</div>
-          </div>
-        </div>
-        <div class="guarantee-item">
-          <span class="guarantee-icon">⚡</span>
-          <div class="guarantee-text">
-            <div class="title">Швидкі терміни</div>
-            <div class="desc">Дотримуємось кожного дедлайну</div>
-          </div>
-        </div>
-
-        <div class="guarantee-item">
-          <span class="guarantee-icon">🔒</span>
-          <div class="guarantee-text">
-            <div class="title">Конфіденційність</div>
-            <div class="desc">Ваші дані під надійним захистом</div>
-          </div>
+        <div class="process-step">
+          <div class="step-num">4</div>
+          <h3 class="step-title">Результат</h3>
+          <p class="step-desc">Отримуєте готовий продукт. Якщо потрібні зміни — вносимо їх до вашого 100% задоволення.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- REVIEWS -->
-  <section id="reviews" class="reviews-bg">
+  <section class="reviews-bg">
     <div class="section-inner">
-      <div class="section-tag reveal">Відгуки клієнтів</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        Що кажуть ті,<br><em>хто вже з нами</em>
+      <div class="section-tag">ВІДГУКИ</div>
+      <h2 class="section-title">
+        Що <em>кажуть</em> <strong>клієнти</strong>
       </h2>
+      <div class="divider"><span>✦</span></div>
       <div class="reviews-grid">
-
         <div class="review-card reveal">
-          <div class="review-service">🎵 Пісня на замовлення</div>
-          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="review-text">Замовляла пісню для чоловіка на ювілей. Я була просто в сльозах — настільки точно передали всю нашу історію. Чоловік теж плакав від зворушення. Це найкращий подарунок у моєму житті!</p>
-          <div class="review-author">
-            <div class="review-avatar">О</div>
-            <div class="review-info">
-              <div class="name">Оксана М.</div>
-              <div class="role">Замовлення на ювілей</div>
-            </div>
+          <span class="review-service">ПІСНЯ НА ЗАМОВЛЕННЯ</span>
+          <div class="review-stars">
+            <span>★★★★★</span>
           </div>
-        </div>
-
-        <div class="review-card reveal reveal-delay-1">
-          <div class="review-service">🎬 Відеомонтаж</div>
-          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="review-text">Замовив весільний фільм — результат перевершив усі очікування! Кожен кадр — це витвір мистецтва. Всі гості на повторному перегляді були в захваті. Рекомендую всім молодятам!</p>
-          <div class="review-author">
-            <div class="review-avatar">А</div>
-            <div class="review-info">
-              <div class="name">Андрій К.</div>
-              <div class="role">Весільний фільм</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card reveal reveal-delay-2">
-          <div class="review-service">✨ Оживлення фото</div>
-          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="review-text">Принесла старе фото дідуся, якого вже немає. Коли побачила як він «рухається» і «посміхається» — не могла говорити від хвилювання. Це неймовірно. Дякую від усього серця!</p>
+          <p class="review-text">"Я замовила пісню на день народження дочці, і це було найкращим подарунком. Команда RC Rovkov Creator створила справжній шедевр!"</p>
           <div class="review-author">
             <div class="review-avatar">М</div>
             <div class="review-info">
-              <div class="name">Марина В.</div>
-              <div class="role">Оживлення сімейного фото</div>
+              <div class="name">Марія П.</div>
+              <div class="role">Донецьк</div>
             </div>
           </div>
         </div>
-
-        <div class="review-card reveal">
-          <div class="review-service">🤖 AI Фотосесія</div>
-          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="review-text">Неймовірні фото! Зробили мені цілу фотосесію в різних стилях — від ділового до гламурного. Виглядаю як з обкладинки журналу. Вже використала для LinkedIn і Instagram.</p>
-          <div class="review-author">
-            <div class="review-avatar">Н</div>
-            <div class="review-info">
-              <div class="name">Наталія Д.</div>
-              <div class="role">AI фотосесія</div>
-            </div>
-          </div>
-        </div>
-
         <div class="review-card reveal reveal-delay-1">
-          <div class="review-service">🎵 Пісня на замовлення</div>
-          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="review-text">Замовляв корпоративний гімн для нашої компанії. Команда RC Rovkov створила щось неймовірне — із першої ноти відчувається характер і дух нашого бізнесу. Всі співробітники в захваті!</p>
+          <span class="review-service">ВІДЕОМОНТАЖ</span>
+          <div class="review-stars">
+            <span>★★★★★</span>
+          </div>
+          <p class="review-text">"Розробляю вміст для YouTube і не знайшов нікого краще. Быстро, якісно, креативно. Рекомендую всім!"</p>
           <div class="review-author">
             <div class="review-avatar">В</div>
             <div class="review-info">
-              <div class="name">Віктор П.</div>
-              <div class="role">Корпоративний гімн</div>
+              <div class="name">Вадим К.</div>
+              <div class="role">Київ</div>
             </div>
           </div>
         </div>
-
         <div class="review-card reveal reveal-delay-2">
-          <div class="review-service">🎥 AI Відео</div>
-          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="review-text">Замовила відео-привітання для мами на 60-річчя. Вона думала що це справжня магія! Відео таке особисте і зворушливе — вся родина дивилась зі сльозами на очах. Топ-сервіс!</p>
+          <span class="review-service">AI ФОТОСЕСІЯ</span>
+          <div class="review-stars">
+            <span>★★★★★</span>
+          </div>
+          <p class="review-text">"Не вірила в можливості AI, поки не спробувала сама. Отримала 50+ професійних портретів за годину! Просто неймовірно!"</p>
           <div class="review-author">
-            <div class="review-avatar">Ю</div>
+            <div class="review-avatar">А</div>
             <div class="review-info">
-              <div class="name">Юлія Р.</div>
-              <div class="role">Відео-привітання на ювілей</div>
+              <div class="name">Анна С.</div>
+              <div class="role">Львів</div>
             </div>
           </div>
         </div>
-
+      </div>
+      <div style="margin-top: 64px; text-align: center;">
+        <div class="guarantee-strip">
+          <div class="guarantee-item">
+            <div class="guarantee-icon">✓</div>
+            <div class="guarantee-text">
+              <div class="title">2000+ замовлень</div>
+              <div class="desc">Успішно виконаних</div>
+            </div>
+          </div>
+          <div class="guarantee-item">
+            <div class="guarantee-icon">★</div>
+            <div class="guarantee-text">
+              <div class="title">5.0 рейтинг</div>
+              <div class="desc">Від реальних клієнтів</div>
+            </div>
+          </div>
+          <div class="guarantee-item">
+            <div class="guarantee-icon">🚀</div>
+            <div class="guarantee-text">
+              <div class="title">24/7 готовність</div>
+              <div class="desc">Завжди на зв'язку</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section" id="contact">
+  <!-- CTA SECTION -->
+  <section class="cta-section">
     <div class="cta-bg"></div>
-    <div class="section-inner" style="text-align:center">
-      <div class="divider"><span>◆</span></div>
-      <div class="section-tag reveal" style="justify-content:center">Розпочнімо</div>
-      <h2 class="cta-title reveal reveal-delay-1">
-        Ваша особлива<br><em>історія</em> чекає
+    <div class="section-inner">
+      <h2 class="cta-title">
+        Готові <em>створити</em> щось <strong>особливе</strong>?
       </h2>
-      <p class="cta-subtitle reveal reveal-delay-2">
-        Напишіть нам — і вже сьогодні ми почнемо творити щось неймовірне для вас
-      </p>
-      <a href="https://t.me/Rovkov" target="_blank" class="btn-primary reveal reveal-delay-2" style="display:inline-flex">
-        <span>✉ Написати зараз</span>
-        <span class="arrow">→</span>
-      </a>
-      <div class="cta-contacts reveal reveal-delay-3">
+      <p class="cta-subtitle">Зв'яжіться з нами і давайте почнемо творчу подорож разом</p>
+      <div class="cta-contacts">
         <a href="https://t.me/Rovkov" target="_blank" class="contact-link">
-          <span class="icon">✈️</span>
-          <span>Telegram: @Rovkov</span>
+          <span class="icon">✈</span>
+          <span>TELEGRAM</span>
         </a>
-        <a href="viber://chat?number=380977789833" class="contact-link">
-          <span class="icon">💬</span>
-          <span>Viber: +38 097 778 98 33</span>
-        </a>
-        <a href="https://wa.me/380977789833" target="_blank" class="contact-link">
-          <span class="icon">📱</span>
-          <span>WhatsApp: +38 097 778 98 33</span>
+        <a href="tel:+380977789833" class="contact-link">
+          <span class="icon">☎</span>
+          <span>+380 97 778-98-33</span>
         </a>
       </div>
     </div>
@@ -1377,102 +1509,107 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-brand">RC Rovkov Creator</div>
-    <div class="footer-copy">© 2026 RC Rovkov Creator. Всі права захищені.</div>
+    <div class="footer-copy">© 2024 RC ROVKOV CREATOR. ALL RIGHTS RESERVED</div>
+    <div class="footer-brand">RC CREATOR</div>
     <div class="footer-links">
-      <a href="#about">Про нас</a>
-      <a href="#services">Послуги</a>
-      <a href="#reviews">Відгуки</a>
-      <a href="#contact">Контакти</a>
+      <a href="#">ПОСЛУГИ</a>
+      <a href="#">КОНТАКТИ</a>
+      <a href="#">ПОРТФОЛІО</a>
     </div>
   </footer>
 
+  <!-- STICKY CTA -->
+  <div class="sticky-cta">
+    <a href="https://t.me/Rovkov" target="_blank">
+      <span>💬 ЧАТУ</span>
+      <div class="sticky-pulse"></div>
+    </a>
+  </div>
+
   <script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    const cursorRing = document.getElementById('cursorRing');
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    // CURSOR
+    const cursor = document.querySelector('.cursor');
+    const cursorRing = document.querySelector('.cursor-ring');
 
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX; mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      cursorRing.style.left = e.clientX + 'px';
+      cursorRing.style.top = e.clientY + 'px';
     });
 
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
-      cursorRing.style.left = ringX + 'px';
-      cursorRing.style.top = ringY + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.width = '16px'; cursor.style.height = '16px';
-        cursorRing.style.width = '56px'; cursorRing.style.height = '56px';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.width = '8px'; cursor.style.height = '8px';
-        cursorRing.style.width = '36px'; cursorRing.style.height = '36px';
-      });
+    document.addEventListener('mousedown', () => {
+      cursor.style.width = '12px';
+      cursor.style.height = '12px';
+      cursorRing.style.width = '42px';
+      cursorRing.style.height = '42px';
     });
 
-    // Navbar scroll
-    const navbar = document.getElementById('navbar');
+    document.addEventListener('mouseup', () => {
+      cursor.style.width = '8px';
+      cursor.style.height = '8px';
+      cursorRing.style.width = '36px';
+      cursorRing.style.height = '36px';
+    });
+
+    // NAV SCROLL
+    const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
     });
 
-    // Reveal on scroll
+    // REVEAL ON SCROLL
     const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    function checkReveal() {
+      reveals.forEach((reveal) => {
+        const top = reveal.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          reveal.classList.add('visible');
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    }
+    window.addEventListener('scroll', checkReveal);
+    checkReveal();
 
-    reveals.forEach(el => observer.observe(el));
+    // PREMIUM TIMER
+    const TIMER_DURATION = 24 * 60 * 60 * 1000;
 
-    // Smooth anchor scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    // Counter animation
-    function animateCounter(el, target, suffix) {
-      let start = 0;
-      const duration = 1800;
-      const startTime = performance.now();
-      function update(time) {
-        const progress = Math.min((time - startTime) / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(ease * target) + suffix;
-        if (progress < 1) requestAnimationFrame(update);
+    function getOrCreateEndTime() {
+      let endTime = localStorage.getItem("premiumDiscountEnd");
+      if (!endTime || Date.now() > endTime) {
+        endTime = Date.now() + TIMER_DURATION;
+        localStorage.setItem("premiumDiscountEnd", endTime);
       }
-      requestAnimationFrame(update);
+      return parseInt(endTime);
     }
 
-    const statNums = document.querySelectorAll('.stat-num');
-    const statObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const text = el.textContent;
-          statObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-    statNums.forEach(el => statObserver.observe(el));
-  </script>
+    let endTime = getOrCreateEndTime();
 
+    function updatePremiumTimer() {
+      const now = Date.now();
+      let distance = endTime - now;
+
+      if (distance <= 0) {
+        endTime = Date.now() + TIMER_DURATION;
+        localStorage.setItem("premiumDiscountEnd", endTime);
+        distance = TIMER_DURATION;
+      }
+
+      const hours = Math.floor(distance / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updatePremiumTimer, 1000);
+    updatePremiumTimer();
+  </script>
 </body>
 </html>
