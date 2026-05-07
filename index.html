@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RC Rovkov Creator — Пісні на замовлення, відеомонтаж, AI фотосесії, оживлення фото</title>
+  <meta name="description" content="RC Rovkov Creator — створюємо пісні на замовлення, відеомонтаж, оживлення фото, AI фотосесії для будь-якої події. Понад 2000+ виконаних замовлень. Premium якість. 99% задоволених клієнтів." />
+  <meta name="keywords" content="пісня на замовлення, відеомонтаж, оживлення фото, AI фотосесія, генерація відео, відео на замовлення, пісня на день народження, пісня на весілля, монтаж відео, кліп на замовлення, музика на замовлення, фото AI, штучний інтелект фото, відеомонтаж для події, пісня на ювілей, пісня на корпоратив, монтаж весільного відео, оживити фото, відео привітання, Rovkov Creator" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="RC Rovkov Creator — Пісні на замовлення, відеомонтаж, AI фотосесії" />
+  <meta property="og:description" content="2000+ виконаних замовлень. Premium якість. Пісні, відео, AI фото для будь-якої події." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="uk_UA" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Tenor+Sans&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E2C47A;
+      --gold-dim: #8B6914;
+      --black: #080808;
+      --deep: #0D0D0D;
+      --surface: #111111;
+      --surface2: #161616;
+      --text: #F0EDE6;
+      --text-muted: #9A9488;
+      --border: rgba(201,168,76,0.18);
+      --border-strong: rgba(201,168,76,0.38);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* NOISE OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* CURSOR */
+    .cursor {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(201,168,76,0.5);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%,-50%);
+      transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(8,8,8,0.95) 0%, transparent 100%);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      border-color: var(--border);
+      padding: 16px 60px;
+      background: rgba(8,8,8,0.97);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 48px; height: 48px;
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-mark::before {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 1px solid rgba(201,168,76,0.3);
+    }
+    .logo-mark span {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .logo-text .rc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 3px;
+    }
+    .logo-text .creator {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 9px;
+      letter-spacing: 6px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateX(-101%);
+      transition: transform 0.3s;
+    }
+    .nav-cta:hover { color: var(--black); }
+    .nav-cta:hover::before { transform: translateX(0); }
+    .nav-cta span { position: relative; z-index: 1; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 60px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 50%, rgba(201,168,76,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(201,168,76,0.03) 0%, transparent 60%);
+    }
+
+    /* Animated lines */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hero-lines::before,
+    .hero-lines::after {
+      content: '';
+      position: absolute;
+      border: 1px solid rgba(201,168,76,0.06);
+      border-radius: 50%;
+      animation: pulse-ring 8s ease-in-out infinite;
+    }
+    .hero-lines::before {
+      width: 700px; height: 700px;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .hero-lines::after {
+      width: 1100px; height: 1100px;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      animation-delay: 2s;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 0.3; transform: translate(-50%,-50%) scale(1); }
+      50% { opacity: 0.7; transform: translate(-50%,-50%) scale(1.03); }
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      border: 1px solid var(--border-strong);
+      margin-bottom: 48px;
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      animation: fadeDown 0.8s ease both;
+    }
+    .hero-badge::before { content: '◆'; font-size: 6px; }
+    .hero-badge::after { content: '◆'; font-size: 6px; }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(56px, 8vw, 108px);
+      font-weight: 300;
+      line-height: 0.9;
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.9s ease 0.2s both;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 300;
+    }
+    .hero-title .line2 {
+      display: block;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: clamp(13px, 1.5vw, 16px);
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 56px;
+      animation: fadeUp 0.9s ease 0.4s both;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s ease 0.6s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 48px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold-light);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 60px rgba(201,168,76,0.3); }
+    .btn-primary:hover::before { transform: scaleX(1); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-primary .arrow { position: relative; z-index: 1; transition: transform 0.3s; }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 40px;
+      border: 1px solid var(--border-strong);
+      color: var(--text-muted);
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* STATS */
+    .stats-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      padding: 0;
+      overflow: hidden;
+    }
+    .stats-inner {
+      display: flex;
+      align-items: stretch;
+    }
+    .stat-item {
+      flex: 1;
+      padding: 40px 48px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.4s;
+    }
+    .stat-item:hover::before { width: 60%; }
+    .stat-item:hover { background: rgba(201,168,76,0.04); }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .stat-label {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 120px 60px;
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .section-tag::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .section-title strong {
+      font-weight: 600;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .about-text p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .about-text p strong { color: var(--gold); font-weight: 500; }
+
+    .about-visual {
+      position: relative;
+    }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 48px;
+      position: relative;
+    }
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 40px;
+      width: 80px; height: 2px;
+      background: var(--gold);
+    }
+    .about-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .about-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .about-card ul li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .about-card ul li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 7px;
+      flex-shrink: 0;
+    }
+    .about-card-corner {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 80px; height: 80px;
+      border: 1px solid var(--border);
+      background: var(--black);
+    }
+
+    /* SERVICES */
+    .services-bg {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 64px;
+    }
+    .service-card {
+      background: var(--surface);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .service-card:hover { background: var(--surface2); }
+    .service-card:hover::after { opacity: 1; }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-weight: 600;
+      color: rgba(201,168,76,0.08);
+      line-height: 1;
+      margin-bottom: -16px;
+      display: block;
+      transition: color 0.3s;
+    }
+    .service-card:hover .service-num { color: rgba(201,168,76,0.14); }
+
+    .service-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .service-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .service-tag {
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* PROCESS */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 64px;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: var(--border);
+    }
+    .process-step {
+      text-align: center;
+      padding: 0 32px;
+      position: relative;
+    }
+    .step-num {
+      width: 80px; height: 80px;
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--gold);
+      background: var(--black);
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s;
+    }
+    .process-step:hover .step-num {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* REVIEWS */
+    .reviews-bg {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .review-card {
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 40px;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .review-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+    }
+    .review-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      right: 32px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      color: rgba(201,168,76,0.12);
+      line-height: 1;
+    }
+    .review-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .review-stars span {
+      color: var(--gold);
+      font-size: 14px;
+    }
+    .review-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .review-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+    }
+    .review-info .name {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 13px;
+      color: var(--text);
+      letter-spacing: 1px;
+    }
+    .review-info .role {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .review-service {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      font-size: 10px;
+      font-family: 'Tenor Sans', sans-serif;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* GUARANTEE */
+    .guarantee-strip {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid var(--border-strong);
+      padding: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      margin-top: 64px;
+      flex-wrap: wrap;
+    }
+    .guarantee-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .guarantee-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+    .guarantee-text .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .guarantee-text .desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+    }
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .cta-title em { font-style: italic; color: var(--gold); }
+    .cta-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 56px;
+      position: relative;
+    }
+    .cta-contacts {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+      position: relative;
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 36px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .contact-link:hover { border-color: var(--gold); color: var(--gold); }
+    .contact-link .icon { font-size: 18px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Tenor Sans', sans-serif;
+      letter-spacing: 2px;
+    }
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--gold);
+      letter-spacing: 3px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Tenor Sans', sans-serif;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* STICKY CTA */
+    .sticky-cta {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 999;
+      animation: fadeIn 1s 1.5s both;
+    }
+    .sticky-cta a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      background: var(--gold);
+      color: var(--black);
+      text-decoration: none;
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      box-shadow: 0 8px 40px rgba(201,168,76,0.4);
+      transition: all 0.3s;
+    }
+    .sticky-cta a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 60px rgba(201,168,76,0.5);
+      background: var(--gold-light);
+    }
+    .sticky-pulse {
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      animation: sticky-pulse 2s ease-in-out infinite;
+      z-index: -1;
+    }
+    @keyframes sticky-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.08); opacity: 0; }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* DIVIDER */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 0 auto 64px;
+      max-width: 300px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider span {
+      color: var(--gold);
+      font-size: 8px;
+    }
+
+    @media (max-width: 1024px) {
+      nav { padding: 20px 30px; }
+      nav.scrolled { padding: 14px 30px; }
+      section { padding: 80px 30px; }
+      .hero { padding: 100px 30px 60px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .process-steps::before { display: none; }
+      .stats-inner { flex-wrap: wrap; }
+      .stat-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
+      footer { padding: 32px 30px; }
+      .guarantee-strip { padding: 40px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { letter-spacing: -1px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .stat-item { flex: 1 1 100%; }
+      .nav-cta { display: none; }
+      .hero-cta-group { flex-direction: column; }
+      footer { flex-direction: column; text-align: center; }
+      .guarantee-strip { flex-direction: column; }
+      .cta-contacts { flex-direction: column; align-items: center; }
+      .sticky-cta { bottom: 16px; right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSORS -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- STICKY CTA -->
+  <div class="sticky-cta">
+    <div class="sticky-pulse"></div>
+    <a href="https://t.me/Rovkov" target="_blank">
+      ✉ Написати зараз
+    </a>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="logo">
+      <div class="logo-mark"><span>RC</span></div>
+      <div class="logo-text">
+        <span class="rc">Rovkov</span>
+        <span class="creator">Creator</span>
+      </div>
+    </a>
+    <a href="https://t.me/Rovkov" target="_blank" class="nav-cta">
+      <span>Написати зараз</span>
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Premium Creative Studio</div>
+      <h1 class="hero-title">
+        <em>Творимо емоції</em>
+        <span class="line2">що залишаються назавжди</span>
+      </h1>
+      <p class="hero-subtitle">Пісні · Відео · AI фото · Оживлення фотографій</p>
+      <div class="hero-cta-group">
+        <a href="https://t.me/Rovkov" target="_blank" class="btn-primary">
+          <span>Написати зараз</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#services" class="btn-secondary">Наші послуги</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <span class="stat-num">2000<span style="font-size:32px;vertical-align:super">+</span></span>
+        <span class="stat-label">Виконаних замовлень</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <span class="stat-num">99<span style="font-size:32px;vertical-align:super">%</span></span>
+        <span class="stat-label">Задоволених клієнтів</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">Унікальних ідей</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <span class="stat-num">24<span style="font-size:32px;vertical-align:super">h</span></span>
+        <span class="stat-label">Швидка відповідь</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="section-tag reveal">Про нас</div>
+          <h2 class="section-title reveal reveal-delay-1">
+            Ми перетворюємо<br><em>ваші моменти</em><br><strong>на шедеври</strong>
+          </h2>
+          <div class="about-text reveal reveal-delay-2">
+            <p>RC Rovkov Creator — це команда творців, які живуть мистецтвом. Ми спеціалізуємося на створенні унікального контенту, який <strong>торкається серця і залишається в пам'яті</strong>.</p>
+            <p>Кожне замовлення — це індивідуальна робота. Ми занурюємося в вашу історію, щоб створити щось по-справжньому особливе. Від пісні на день народження до повноцінного відеофільму — ми втілюємо мрії в реальність.</p>
+            <p>Понад <strong>2000 щасливих клієнтів</strong> вже довірились нам свої найважливіші моменти — весілля, ювілеї, корпоративи, сімейні свята. Приєднуйтесь до нашої великої творчої родини.</p>
+          </div>
+        </div>
+        <div class="about-visual reveal reveal-delay-2">
+          <div class="about-card">
+            <div class="about-card-title">Чому обирають нас?</div>
+            <ul>
+              <li>Premium якість кожного продукту</li>
+              <li>Індивідуальний підхід до кожного клієнта</li>
+              <li>Дотримання термінів завжди</li>
+
+              <li>Конфіденційність ваших даних</li>
+              <li>Сучасні технології та AI-інструменти</li>
+              <li>Підтримка 24/7 для наших клієнтів</li>
+            </ul>
+            <div class="about-card-corner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services-bg">
+    <div class="section-inner">
+      <div class="section-tag reveal">Послуги</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Все що вам потрібно<br><em>в одному місці</em>
+      </h2>
+      <div class="services-grid reveal reveal-delay-2">
+
+        <div class="service-card">
+          <span class="service-num">01</span>
+          <span class="service-icon">🎵</span>
+          <div class="service-name">Пісня на замовлення</div>
+          <p class="service-desc">Унікальна авторська пісня для будь-якого приводу. Пишемо тексти, музику та повноцінний запис. Від ліричної балади до веселого хіта — будь-який жанр.</p>
+          <div class="service-tags">
+            <span class="service-tag">День народження</span>
+            <span class="service-tag">Весілля</span>
+            <span class="service-tag">Ювілей</span>
+            <span class="service-tag">Корпоратив</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">02</span>
+          <span class="service-icon">🎬</span>
+          <div class="service-name">Відеомонтаж</div>
+          <p class="service-desc">Професійний монтаж відео для будь-якої події. Слайд-шоу, весільні фільми, кліпи, корпоративні ролики. Кінематографічна якість з душею.</p>
+          <div class="service-tags">
+            <span class="service-tag">Весілля</span>
+            <span class="service-tag">Кліп</span>
+            <span class="service-tag">Реклама</span>
+            <span class="service-tag">Слайд-шоу</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">03</span>
+          <span class="service-icon">✨</span>
+          <div class="service-name">Оживлення фото</div>
+          <p class="service-desc">Перетворюємо статичні фотографії на захоплюючі відео з ефектом руху. Старі фото оживають — ваші рідні рухаються, посміхаються, дивляться у вічі.</p>
+          <div class="service-tags">
+            <span class="service-tag">Ретро фото</span>
+            <span class="service-tag">Пам'ять</span>
+            <span class="service-tag">AI технологія</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">04</span>
+          <span class="service-icon">🤖</span>
+          <div class="service-name">AI Фотосесія</div>
+          <p class="service-desc">Неймовірні фотографії без фотостудії. Завантажте своє фото — отримайте professionale зйомку в будь-якому стилі, локації та образі. Магія AI.</p>
+          <div class="service-tags">
+            <span class="service-tag">Портрет</span>
+            <span class="service-tag">Стиль</span>
+            <span class="service-tag">Будь-яка локація</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">05</span>
+          <span class="service-icon">🎥</span>
+          <div class="service-name">Генерація відео AI</div>
+          <p class="service-desc">Створення відеоконтенту за допомогою найновіших AI-технологій. Унікальні візуальні образи, рекламні ролики, мистецькі відео — без меж для уяви.</p>
+          <div class="service-tags">
+            <span class="service-tag">AI відео</span>
+            <span class="service-tag">Реклама</span>
+            <span class="service-tag">Арт</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">06</span>
+          <span class="service-icon">🎁</span>
+          <div class="service-name">Відеопривітання</div>
+          <p class="service-desc">Персональні відеопривітання для найрідніших людей. Зворушливі, веселі, незабутні. Ідеальний подарунок на будь-яке свято — від дня народження до Нового року.</p>
+          <div class="service-tags">
+            <span class="service-tag">Привітання</span>
+            <span class="service-tag">Подарунок</span>
+            <span class="service-tag">Свято</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="section-inner">
+      <div style="text-align:center">
+        <div class="section-tag reveal" style="justify-content:center">Як ми працюємо</div>
+        <h2 class="section-title reveal reveal-delay-1" style="text-align:center">
+          Просто. Швидко.<br><em>З душею</em>
+        </h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">01</div>
+          <div class="step-title">Звʼяжіться з нами</div>
+          <p class="step-desc">Напишіть у Telegram, Viber або WhatsApp. Розкажіть про ваш проект та побажання.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-num">02</div>
+          <div class="step-title">Обговорення</div>
+          <p class="step-desc">Ми уточнюємо всі деталі, стиль, дедлайн і узгоджуємо кожен крок разом з вами.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-num">03</div>
+          <div class="step-title">Творимо</div>
+          <p class="step-desc">Наша команда починає роботу. Ви отримуєте чернетку для погодження та правок.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-num">04</div>
+          <div class="step-title">Отримуєте шедевр</div>
+          <p class="step-desc">Фінальний результат у найвищій якості. Ви в захваті — ми задоволені. Гарантовано.</p>
+        </div>
+      </div>
+
+      <div class="guarantee-strip reveal">
+        <div class="guarantee-item">
+          <span class="guarantee-icon">💎</span>
+          <div class="guarantee-text">
+            <div class="title">Premium якість</div>
+            <div class="desc">Кожен проект — як для себе</div>
+          </div>
+        </div>
+        <div class="guarantee-item">
+          <span class="guarantee-icon">⚡</span>
+          <div class="guarantee-text">
+            <div class="title">Швидкі терміни</div>
+            <div class="desc">Дотримуємось кожного дедлайну</div>
+          </div>
+        </div>
+
+        <div class="guarantee-item">
+          <span class="guarantee-icon">🔒</span>
+          <div class="guarantee-text">
+            <div class="title">Конфіденційність</div>
+            <div class="desc">Ваші дані під надійним захистом</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="reviews-bg">
+    <div class="section-inner">
+      <div class="section-tag reveal">Відгуки клієнтів</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Що кажуть ті,<br><em>хто вже з нами</em>
+      </h2>
+      <div class="reviews-grid">
+
+        <div class="review-card reveal">
+          <div class="review-service">🎵 Пісня на замовлення</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">Замовляла пісню для чоловіка на ювілей. Я була просто в сльозах — настільки точно передали всю нашу історію. Чоловік теж плакав від зворушення. Це найкращий подарунок у моєму житті!</p>
+          <div class="review-author">
+            <div class="review-avatar">О</div>
+            <div class="review-info">
+              <div class="name">Оксана М.</div>
+              <div class="role">Замовлення на ювілей</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-service">🎬 Відеомонтаж</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">Замовив весільний фільм — результат перевершив усі очікування! Кожен кадр — це витвір мистецтва. Всі гості на повторному перегляді були в захваті. Рекомендую всім молодятам!</p>
+          <div class="review-author">
+            <div class="review-avatar">А</div>
+            <div class="review-info">
+              <div class="name">Андрій К.</div>
+              <div class="role">Весільний фільм</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-service">✨ Оживлення фото</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">Принесла старе фото дідуся, якого вже немає. Коли побачила як він «рухається» і «посміхається» — не могла говорити від хвилювання. Це неймовірно. Дякую від усього серця!</p>
+          <div class="review-author">
+            <div class="review-avatar">М</div>
+            <div class="review-info">
+              <div class="name">Марина В.</div>
+              <div class="role">Оживлення сімейного фото</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-service">🤖 AI Фотосесія</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">Неймовірні фото! Зробили мені цілу фотосесію в різних стилях — від ділового до гламурного. Виглядаю як з обкладинки журналу. Вже використала для LinkedIn і Instagram.</p>
+          <div class="review-author">
+            <div class="review-avatar">Н</div>
+            <div class="review-info">
+              <div class="name">Наталія Д.</div>
+              <div class="role">AI фотосесія</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-service">🎵 Пісня на замовлення</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">Замовляв корпоративний гімн для нашої компанії. Команда RC Rovkov створила щось неймовірне — із першої ноти відчувається характер і дух нашого бізнесу. Всі співробітники в захваті!</p>
+          <div class="review-author">
+            <div class="review-avatar">В</div>
+            <div class="review-info">
+              <div class="name">Віктор П.</div>
+              <div class="role">Корпоративний гімн</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-service">🎥 AI Відео</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">Замовила відео-привітання для мами на 60-річчя. Вона думала що це справжня магія! Відео таке особисте і зворушливе — вся родина дивилась зі сльозами на очах. Топ-сервіс!</p>
+          <div class="review-author">
+            <div class="review-avatar">Ю</div>
+            <div class="review-info">
+              <div class="name">Юлія Р.</div>
+              <div class="role">Відео-привітання на ювілей</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="cta-bg"></div>
+    <div class="section-inner" style="text-align:center">
+      <div class="divider"><span>◆</span></div>
+      <div class="section-tag reveal" style="justify-content:center">Розпочнімо</div>
+      <h2 class="cta-title reveal reveal-delay-1">
+        Ваша особлива<br><em>історія</em> чекає
+      </h2>
+      <p class="cta-subtitle reveal reveal-delay-2">
+        Напишіть нам — і вже сьогодні ми почнемо творити щось неймовірне для вас
+      </p>
+      <a href="https://t.me/Rovkov" target="_blank" class="btn-primary reveal reveal-delay-2" style="display:inline-flex">
+        <span>✉ Написати зараз</span>
+        <span class="arrow">→</span>
+      </a>
+      <div class="cta-contacts reveal reveal-delay-3">
+        <a href="https://t.me/Rovkov" target="_blank" class="contact-link">
+          <span class="icon">✈️</span>
+          <span>Telegram: @Rovkov</span>
+        </a>
+        <a href="viber://chat?number=380977789833" class="contact-link">
+          <span class="icon">💬</span>
+          <span>Viber: +38 097 778 98 33</span>
+        </a>
+        <a href="https://wa.me/380977789833" target="_blank" class="contact-link">
+          <span class="icon">📱</span>
+          <span>WhatsApp: +38 097 778 98 33</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">RC Rovkov Creator</div>
+    <div class="footer-copy">© 2026 RC Rovkov Creator. Всі права захищені.</div>
+    <div class="footer-links">
+      <a href="#about">Про нас</a>
+      <a href="#services">Послуги</a>
+      <a href="#reviews">Відгуки</a>
+      <a href="#contact">Контакти</a>
+    </div>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '16px'; cursor.style.height = '16px';
+        cursorRing.style.width = '56px'; cursorRing.style.height = '56px';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '8px'; cursor.style.height = '8px';
+        cursorRing.style.width = '36px'; cursorRing.style.height = '36px';
+      });
+    });
+
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Counter animation
+    function animateCounter(el, target, suffix) {
+      let start = 0;
+      const duration = 1800;
+      const startTime = performance.now();
+      function update(time) {
+        const progress = Math.min((time - startTime) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    const statNums = document.querySelectorAll('.stat-num');
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const text = el.textContent;
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    statNums.forEach(el => statObserver.observe(el));
+  </script>
+
+</body>
+</html>
