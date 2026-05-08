@@ -123,7 +123,6 @@
     .service-tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
     .service-tag { border: 1px solid rgba(212,175,55,0.2); color: rgba(212,175,55,0.6); font-size: 9px; letter-spacing: 2px; padding: 5px 12px; text-transform: uppercase; }
 
-    /* ===== CARD 05 FULL WIDTH ===== */
     .service-card-wide {
       grid-column: 1 / -1;
       background: var(--surface2);
@@ -388,7 +387,6 @@
         </div>
       </div>
 
-      <!-- ===== CARD 05 — WIDE ===== -->
       <div class="service-card-wide" data-num="05">
         <div class="service-icon">🌟</div>
         <h3>Та багато іншого — будь-яка ваша ідея</h3>
@@ -630,16 +628,38 @@
     }
     animate();
 
-    (function startTimer(){
-      let endTime = Date.now() + 86400000;
-      setInterval(()=>{
-        let diff=endTime-Date.now();
-        if(diff<=0){endTime=Date.now()+86400000;diff=86400000;}
-        document.getElementById('h').textContent=Math.floor(diff/3600000).toString().padStart(2,'0');
-        document.getElementById('m').textContent=Math.floor((diff%3600000)/60000).toString().padStart(2,'0');
-        document.getElementById('s').textContent=Math.floor((diff%60000)/1000).toString().padStart(2,'0');
-      },1000);
+    // ── ТАЙМЕР із збереженням у localStorage ──────────────────────────────
+    (function startTimer() {
+      const KEY = 'rc_timer_end';
+      let stored = localStorage.getItem(KEY);
+      let endTime;
+
+      if (!stored || isNaN(Number(stored))) {
+        // Перший візит — встановлюємо кінцевий час через 24 год
+        endTime = Date.now() + 86400000;
+        localStorage.setItem(KEY, endTime);
+      } else {
+        endTime = Number(stored);
+        // Якщо час вже вийшов — перезапускаємо на нові 24 год
+        if (endTime <= Date.now()) {
+          endTime = Date.now() + 86400000;
+          localStorage.setItem(KEY, endTime);
+        }
+      }
+
+      setInterval(function () {
+        var diff = endTime - Date.now();
+        if (diff <= 0) {
+          endTime = Date.now() + 86400000;
+          localStorage.setItem(KEY, endTime);
+          diff = 86400000;
+        }
+        document.getElementById('h').textContent = Math.floor(diff / 3600000).toString().padStart(2, '0');
+        document.getElementById('m').textContent = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+        document.getElementById('s').textContent = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+      }, 1000);
     })();
+    // ──────────────────────────────────────────────────────────────────────
 
     function shareSite(){
       if(navigator.share){navigator.share({title:'RC Rovkov Creator',text:'Створення пісень, відеомонтаж та AI сервіси преміум якості!',url:window.location.href});}
