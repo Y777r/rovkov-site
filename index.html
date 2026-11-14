@@ -1038,7 +1038,7 @@ svg.stroke { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap
    REPLACE a project -> change its fields (title, files, category ...).
    REORDER           -> move blocks up or down. The page shows them in this order.
 
-   Put your files in:  assets/portfolio/   (create subfolders if you like)
+   Original MP4 videos for this portfolio are served from Cloudflare R2 using ORIGINAL_MEDIA_BASE below.
 
    FIELDS
    ------
@@ -1052,15 +1052,12 @@ svg.stroke { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap
    title        Project title.
    description  One or two short sentences.
 
-   For type "video":   src: "assets/portfolio/my-video.mp4"
-                       poster: "assets/portfolio/my-video.jpg"   (thumbnail – recommended)
+   For type "video":   src: window.ORIGINAL_MEDIA_BASE + "/your-original-file.mp4"
+                       poster: "assets/portfolio/your-thumbnail.jpg"   (optional thumbnail)
    For type "image":   src: "assets/portfolio/my-image.jpg"
    For type "gallery": images: ["assets/portfolio/a.jpg", "assets/portfolio/b.jpg", ...]
 
-   Items with  slot: true  (or with no media file) are shown as dashed
-   "your project here" placeholders. Once you add real files and remove
-   "slot: true", the placeholder turns into a real, clickable project.
-   Delete the sample slots when you no longer need them.
+   All 20 portfolio videos below point to original MP4 objects in Cloudflare R2.
    ========================================================================== */
 
 window.PORTFOLIO_CATEGORIES = [
@@ -1082,173 +1079,165 @@ window.ORIGINAL_MEDIA_BASE = "https://media.rovkov.com";
 
 window.PORTFOLIO_PROJECTS = [
   {
-    category: "AI Video Production",
+    category: 'Creative Digital Projects',
     type: "video",
-    aspect: "9:16",
-    title: "Fashion in Motion — AI Visual Film",
-    description: "A stylized AI video showcase combining virtual fashion, expressive characters and cinematic visual transitions.",
-    src: "assets/portfolio/01-ai-video-fashion.mp4",
-    poster: "assets/portfolio/01-ai-video-fashion.jpg"
+    aspect: '9:16',
+    title: 'Black & White Cinematic Storyboard',
+    description: 'A monochrome cinematic sequence presented in a classic storyboard style.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000300760.mp4"
   },
   {
-    category: "AI Video Production",
+    category: 'Animation & Cartoons',
     type: "video",
-    aspect: "9:16",
-    title: "A Christmas World — AI Video Showcase",
-    description: "A playful holiday visual story featuring a colorful winter setting, animated characters and festive cinematic scenes.",
-    src: "assets/portfolio/01-ai-video-holiday.mp4",
-    poster: "assets/portfolio/01-ai-video-holiday.jpg"
+    aspect: '16:9',
+    title: 'Tropical Fruit Adventure',
+    description: 'A playful 3D animated encounter between fruit characters in a tropical world.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000303450.mp4"
   },
   {
-    category: "Music Videos",
+    category: 'Creative Digital Projects',
     type: "video",
-    aspect: "16:9",
-    title: "Ethereal — Cinematic Music Video",
-    description: "A cinematic music-video concept combining dramatic fashion imagery, surreal environments, elemental effects and expressive close-ups.",
-    src: "assets/portfolio/02-music-ethereal.mp4",
-    poster: "assets/portfolio/02-music-ethereal.jpg"
+    aspect: '9:16',
+    title: 'Festive Garden House',
+    description: 'A festive visual scene featuring a warmly decorated house and seasonal atmosphere.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000486498.mp4"
   },
   {
-    category: "Music Videos",
+    category: 'Animation & Cartoons',
     type: "video",
-    aspect: "9:16",
-    title: "The Singing Cats — AI Music Video",
-    description: "A playful musical performance featuring animated feline characters in a recording-studio setting.",
-    src: "assets/portfolio/02-music-singing-cats.mp4",
-    poster: "assets/portfolio/02-music-singing-cats.jpg"
+    aspect: '16:9',
+    title: 'Little Fantasy Creature',
+    description: 'A charming fantasy character brought to life in a cinematic animated scene.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000621421.mp4"
   },
   {
-    category: "Commercial & Advertising",
+    category: 'AI Photography',
     type: "video",
-    aspect: "9:16",
-    title: "AI Photoshoot — Service Promotion",
-    description: "A promotional video introducing AI-powered photoshoots through a range of virtual models, fashion looks and visual concepts.",
-    src: "assets/portfolio/03-ad-ai-photoshoot.mp4",
-    poster: "assets/portfolio/03-ad-ai-photoshoot.jpg"
+    aspect: '9:16',
+    title: 'Fashion & Beauty Showcase',
+    description: 'A fast-paced vertical showcase of fashion portraits and editorial-inspired looks.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000621656.mp4"
   },
   {
-    category: "Commercial & Advertising",
+    category: 'Animation & Cartoons',
     type: "video",
-    aspect: "9:16",
-    title: "Your Story, Your Magic — Cartoon Promotion",
-    description: "A promotional concept for personalized animated films, showing how a personal story can become a colorful cartoon adventure.",
-    src: "assets/portfolio/03-ad-cartoon.mp4",
-    poster: "assets/portfolio/03-ad-cartoon.jpg"
+    aspect: '9:16',
+    title: 'Cosmic Fantasy World',
+    description: 'A colorful fantasy journey through a luminous, imaginative universe.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000628574.mp4"
   },
   {
-    category: "Custom Songs & Music",
+    category: 'Branding & Visual Design',
     type: "video",
-    aspect: "9:16",
-    title: "ROCK EVOLUTION — Music Collection",
-    description: "A visual presentation of a ten-track rock collection, created as a music showcase with a bold, high-energy identity.",
-    src: "assets/portfolio/04-music-rock-evolution.mp4",
-    poster: "assets/portfolio/04-music-rock-evolution.jpg"
+    aspect: '9:16',
+    title: 'RC Rovkov Creator — Brand Reveal',
+    description: 'A cinematic brand reveal with glowing details and a premium dark visual style.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000630512.mp4"
   },
   {
-    category: "Animation & Cartoons",
+    category: 'AI Video Production',
     type: "video",
-    aspect: "16:9",
-    title: "Banana & Strawberry — 3D Animated Adventure",
-    description: "A lighthearted 3D animated short featuring expressive fruit characters, playful scenes and a colorful adventure.",
-    src: "assets/portfolio/07-animation-fruit-adventure.mp4",
-    poster: "assets/portfolio/07-animation-fruit-adventure.jpg"
+    aspect: '9:16',
+    title: 'Fashion in the City',
+    description: 'A stylish fashion scene with a dramatic urban atmosphere.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000630514.mp4"
   },
   {
-    category: "Animation & Cartoons",
+    category: 'Creative Digital Projects',
     type: "video",
-    aspect: "9:16",
-    title: "Magical Alphabet — 3D Learning Adventure",
-    description: "A colorful animated learning concept featuring playful characters, alphabet-inspired visuals and imaginative environments.",
-    src: "assets/portfolio/07-animation-magical-worlds.mp4",
-    poster: "assets/portfolio/07-animation-magical-worlds.jpg"
+    aspect: '9:16',
+    title: 'Enchanted Winter City',
+    description: 'A magical winter-inspired visual journey filled with glowing lights.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000630516.mp4"
   },
   {
-    category: "Video Editing",
+    category: 'Commercial & Advertising',
     type: "video",
-    aspect: "9:16",
-    title: "Italian Escape — Travel Promotional Edit",
-    description: "A travel-focused montage combining coastal scenery, village details, seaside dining and promotional text.",
-    src: "assets/portfolio/08-edit-travel.mp4",
-    poster: "assets/portfolio/08-edit-travel.jpg"
+    aspect: '9:16',
+    title: 'A Collection of Special Moments',
+    description: 'A creative visual presentation built around memorable moments and elegant details.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000630518.mp4"
   },
   {
-    category: "Video Editing",
+    category: 'Animation & Cartoons',
     type: "video",
-    aspect: "9:16",
-    title: "Vintage Cinema — Retro Video Montage",
-    description: "A black-and-white montage inspired by classic cinema, archival imagery and nostalgic film aesthetics.",
-    src: "assets/portfolio/08-edit-vintage.mp4",
-    poster: "assets/portfolio/08-edit-vintage.jpg"
+    aspect: '9:16',
+    title: 'A Magical Storybook World',
+    description: 'A whimsical animated world with storybook characters and colorful scenery.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000630519.mp4"
   },
   {
-    category: "AI Photography",
-    type: "gallery",
-    aspect: "4:5",
-    title: "AI Photography — Editorial & Product Collection",
-    description: "An AI concept collection spanning luxury portraits, product advertising, fantasy photography, virtual models and professional business imagery. Illustrative concept visuals, not commissioned client case studies.",
-    images: ["assets/portfolio/ai-photo-luxury-portrait.jpg", "assets/portfolio/ai-photo-product-collection.jpg", "assets/portfolio/ai-photo-fantasy-collection.jpg", "assets/portfolio/ai-photo-models-collection.jpg", "assets/portfolio/ai-photo-business-collection.jpg"]
-  },
-  {
-    category: "Virtual Models & Characters",
-    type: "image",
-    aspect: "3:4",
-    title: "Virtual Models & Characters — Character Universe",
-    description: "An AI-generated concept board exploring digital influencers, virtual models, fantasy heroes, game characters and original brand mascots.",
-    src: "assets/portfolio/virtual-models-characters.jpg"
-  },
-  {
-    category: "Branding & Visual Design",
-    type: "image",
-    aspect: "16:9",
-    title: "ROVKOV VIDEO LAB — Brand Identity Concept",
-    description: "A visual identity concept featuring a logo direction, stationery, branded merchandise, social media presentation and premium emerald-and-gold art direction.",
-    src: "assets/portfolio/branding-identity-collection.jpg"
-  },
-  {
-    category: "Creative Digital Projects",
-    type: "gallery",
-    aspect: "16:9",
-    title: "Creative Digital Projects — Experimental Art & Concepts",
-    description: "A collection of AI-powered creative concepts, digital worlds and mixed-media illustration styles, including watercolor, pencil, ink, markers and painting-inspired artwork.",
-    images: ["assets/portfolio/creative-digital-projects.jpg", "assets/portfolio/traditional-art-styles.jpg"]
-  },
-  {
-    category: "Creative Digital Projects",
+    category: 'Creative Digital Projects',
     type: "video",
-    aspect: "16:9",
-    title: "Tropical Fruit Adventure",
-    description: "A playful animated scene featuring colourful characters in a vivid tropical setting.",
-    src: window.ORIGINAL_MEDIA_BASE + "/1000303450.mp4",
-    poster: "assets/portfolio/1000303450-original-poster.jpg"
+    aspect: '9:16',
+    title: 'Golden Celestial Journey',
+    description: 'A luminous fantasy sequence with golden light and celestial imagery.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000631175.mp4"
   },
   {
-    category: "Creative Digital Projects",
+    category: 'Commercial & Advertising',
     type: "video",
-    aspect: "9:16",
-    title: "AI Fashion & Character Showcase",
-    description: "A vertical visual showcase combining fashion-inspired characters and AI-generated creative direction.",
-    src: window.ORIGINAL_MEDIA_BASE + "/1000621656.mp4",
-    poster: "assets/portfolio/1000621656-original-poster.jpg"
+    aspect: '16:9',
+    title: 'Santa’s Christmas Delivery',
+    description: 'A festive holiday scene featuring a Christmas delivery truck and seasonal decorations.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000631239.mp4"
   },
   {
-    category: "Creative Digital Projects",
+    category: 'Custom Songs & Music',
     type: "video",
-    aspect: "9:16",
-    title: "Celestial Light & Fantasy",
-    description: "A cinematic fantasy sequence built around luminous details, celestial atmosphere and golden light.",
-    src: window.ORIGINAL_MEDIA_BASE + "/1000631175.mp4",
-    poster: "assets/portfolio/1000631175-original-poster.jpg"
+    aspect: '9:16',
+    title: 'Rock Evolution',
+    description: 'A dramatic music-inspired visual celebrating the energy and evolution of rock.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000631241.mp4"
   },
   {
-    category: "Creative Digital Projects",
+    category: 'AI Photography',
     type: "video",
-    aspect: "16:9",
-    title: "Neon Noir — Cinematic Portrait",
-    description: "A cinematic neon-lit character scene with a dramatic, futuristic visual atmosphere.",
-    src: window.ORIGINAL_MEDIA_BASE + "/1000631247.mp4",
-    poster: "assets/portfolio/1000631247-original-poster.jpg"
+    aspect: '9:16',
+    title: 'Portraits & Character Gallery',
+    description: 'A vertical montage of stylized portraits and character concepts.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000631242.mp4"
   },
-
+  {
+    category: 'Creative Digital Projects',
+    type: "video",
+    aspect: '9:16',
+    title: 'Christmas Lights & Ornament',
+    description: 'A festive close-up visual featuring a glowing holiday ornament.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000631243.mp4"
+  },
+  {
+    category: 'AI Video Production',
+    type: "video",
+    aspect: '16:9',
+    title: 'Neon Noir Fashion Film',
+    description: 'A cinematic neon-lit fashion scene with a dramatic futuristic atmosphere.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000631247.mp4"
+  },
+  {
+    category: 'Animation & Cartoons',
+    type: "video",
+    aspect: '9:16',
+    title: 'The Musical Cats',
+    description: 'A playful animated music scene featuring expressive cat characters.',
+    src: window.ORIGINAL_MEDIA_BASE + "/1000631248.mp4"
+  },
+  {
+    category: 'AI Photography',
+    type: "video",
+    aspect: '9:16',
+    title: 'Fashion Portraits — Editorial Montage',
+    description: 'A vertical editorial montage of fashion portraits and visual styles.',
+    src: window.ORIGINAL_MEDIA_BASE + "/30ce2e5f7cea33034556504c15aedb47.mp4"
+  },
+  {
+    category: 'Animation & Cartoons',
+    type: "video",
+    aspect: '9:16',
+    title: 'The Drummer Raccoon',
+    description: 'A lively animated performance featuring a character playing the drums.',
+    src: window.ORIGINAL_MEDIA_BASE + "/d1bab8acf940b3aa56ddc0fc90fba680.mp4"
+  }
 ];
 
 </script>
